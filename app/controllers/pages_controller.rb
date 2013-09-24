@@ -153,7 +153,7 @@ class PagesController < ApplicationController
     end
 #################################origional code input end here
      
-if datatype=="noise"  #datatype is noise 
+if datatype=="noise" && !datavalue.nil? #datatype is noise 
 	@exceed||=false
 	hourtocompare=timeforcheck.strftime("%H").to_i
        if not timeforcheck.wday==0  #if not sunday
