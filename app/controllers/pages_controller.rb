@@ -32,7 +32,7 @@ class PagesController < ApplicationController
 	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~							
 #*********************************************************************************#
 #**update regardless of is in project? because it's the property of concentrator**#
-	@constatus=Concentrator.find_by_device_id(12103695524181812)
+	@constatus=Concentrator.find_by_device_id(device_id) #12103695524181812 if no working device id wrong
 	@constatus.update_attributes(battery_voltage: batteryvoltage/100,concentrator_hp: handphone,concentrator_csq:csq) rescue nil	
 #********************************************************************************# 
 
