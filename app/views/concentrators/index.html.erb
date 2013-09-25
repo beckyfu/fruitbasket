@@ -18,13 +18,15 @@
 <% @concentrators.each do |concentrator| %>
   <%= active_status = !concentrator.project.blank? and concentrator.project.status == "Ongoing" %>
 
-     <% if concentrator.concentrator_csq >=95 
+     <% if !concentrator.concentrator_csq.nil?
+     	if concentrator.concentrator_csq >=95 
 	csqcolor="red"
 	elsif concentrator.concentrator_csq>=85 && concentrator.concentrator_csq<95
 	csqcolor="orange"
 	elsif concentrator.concentrator_csq<85
 	csqcolor="#00FF33"
 	end 
+	end
       %>
 
   <tr>
