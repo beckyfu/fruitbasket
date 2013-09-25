@@ -19,6 +19,8 @@
   <%= active_status = !concentrator.project.blank? and concentrator.project.status == "Ongoing" %>
 
      <% if !concentrator.concentrator_csq.nil?
+     	csqhead="-"
+     	csqtail="dBm"
      	if concentrator.concentrator_csq >=95 
 	csqcolor="red"
 	elsif concentrator.concentrator_csq>=85 && concentrator.concentrator_csq<95
@@ -27,6 +29,9 @@
 	csqcolor="#00FF33"
 	end 
 	end
+	if !concentrator.concentrator_hp.nil?
+	hpheader="+65"
+	
       %>
 
   <tr>
@@ -34,8 +39,8 @@
     <td><%= concentrator.last_assigned_ip_address %></td>
     <td><%= concentrator.last_communication_packet_sent %></td>
     <td><%= concentrator.battery_voltage %>V</td>
-    <td>+65<%= concentrator.concentrator_hp %></td>
-    <td><font color=<%= csqcolor %>><b>-<%= concentrator.concentrator_csq %>dBm</b></font></td>
+    <td><%= hpheader %><%= concentrator.concentrator_hp %></td>
+    <td><font color=<%= csqcolor %>><b><%= csqhead %><%= concentrator.concentrator_csq %><%= csqtail %></b></font></td>
     <td><%= concentrator.hardware_revision_number %></td>
     <td><%= active_status ? "" : concentrator.project.jobsite_location %></td>
     <td><%= concentrator.remarks %></td>
